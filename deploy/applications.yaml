@@ -1,0 +1,45 @@
+---
+# Argo CD App definition for cluster1
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-cluster1
+spec:
+  destination:
+    server: https://10.62.25.11:6443
+    namespace: gitops-kubecon-demo
+  project: kubecon-demo
+  source:
+    path: deploy/overlays/cluster1
+    repoURL: https://github.com/qingkunl/argocd-app-of-apps-demo.git
+    targetRevision: HEAD
+---
+# Argo CD App definition for cluster2
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-cluster2
+spec:
+  destination:
+    server: https://10.62.33.11:6443
+    namespace: gitops-kubecon-demo
+  project: kubecon-demo
+  source:
+    path: deploy/overlays/cluster2
+    repoURL: https://github.com/qingkunl/argocd-app-of-apps-demo.git
+    targetRevision: HEAD
+---
+# Argo CD App definition for cluster3
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-cluster3
+spec:
+  destination:
+    server: https://10.62.45.11:6443
+    namespace: gitops-kubecon-demo
+  project: kubecon-demo
+  source:
+    path: deploy/overlays/cluster3
+    repoURL: https://github.com/qingkunl/argocd-app-of-apps-demo.git
+    targetRevision: HEAD
